@@ -5,29 +5,22 @@ import h5py
 from torch.utils.data import dataset
 import pandas as pd 
 from PIL import Image
-class LAEData_Test():
+class Sound_Data_Test():
 	def __init__(self,transform=None):
 		self.annotations=np.load('ESC10TestData.npy',allow_pickle=True) # Read The names of Test Signals 
-		self.Label=np.load('ESC10TestLabel.npy',allow_pickle=True)
+		self.Label=np.load('ESC10TestLabel.npy',allow_pickle=True)# Numpy File with Class Labels
 		self.Label=np.array(self.Label)
 		self.transform=transform
 	def __len__(self):
 		return len(self.annotations)
 	def __getitem__(self,index):
 		key=self.annotations[index]
-		with h5py.File('ESC10.hdf5', 'r') as f: # Database for Left Channel Test Spectrogram 
+		with h5py.File('ESC10.hdf5', 'r') as f: # H5.py file That Contains Spectrogram Features for Each Signals Present in Test File
 			SG_Data = f[key][()]
 			SG_Data=np.array(SG_Data)
 			SG_Data=Image.fromarray(SG_Data)
-			#SG_Data=np.log((SG_Data + 1e-10))
-			#for i in range(len(SG_Data)):
-				#SG_Data[i,:]=SG_Data[i,:]/np.sum(SG_Data[i,:])
-			#SGmax,SGmin=SG_Data.max(),SG_Data.min()
-			#SG_Data=(SG_Data-SGmin)/(SGmax-SGmin)
 			SG_Label= torch.from_numpy(np.array((self.Label[index])))
-			#print(np.shape(KS_Data),np.shape(SG_Data))
-			#ES_Data=np.dstack((SG_Data,KS_Data))
 			ES_Data=SG_Data
 			if self.transform:
 				ES_Data=self.transform(ES_Data)
-		return (ES_Data,SG_Label)
+		return (ES_Data,SG_Label)# Return ES_Data(Spectrogram Image Feature and Class label)
