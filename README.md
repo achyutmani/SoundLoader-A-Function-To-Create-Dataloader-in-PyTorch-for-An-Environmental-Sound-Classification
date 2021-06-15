@@ -11,5 +11,5 @@ Sample Example Code: <br>
 8. Training_Data=Sound_Data_Train(transform=transform)<br>
 9. Test_Data=Sound_Data_Test(transform=transform)<br>
 10. Train_loader=DataLoader(dataset=Train_Data,batch_size=batch_size,shuffle=True) # Pytorch dataloader for Training <br>
-11. Test_loader=DataLoader(dataset=Train_Data,batch_size=batch_size,shuffle=True) Pytorch dataloader for Test <br>
+11. Test_loader=DataLoader(dataset=Test_Data,batch_size=batch_size,shuffle=True) Pytorch dataloader for Test <br>
 
