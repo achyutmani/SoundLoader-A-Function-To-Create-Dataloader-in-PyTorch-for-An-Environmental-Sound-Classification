@@ -6,7 +6,7 @@ Sample Example Code: <br>
 3. from torchvision.transforms import transforms<br>
 4. from SoundCustomDataloader_Train import Sound_Data_Train<br>
 5. from SoundCustomDataloader_Test import Sound_Data_Test<br>
-6. train_transformations = transforms.Compose([transforms.Resize([224,224]),transforms.ToTensor(),transforms.Normalize(mean=[0.485], std=[0.229])])<br>
+6. transform = transforms.Compose([transforms.Resize([224,224]),transforms.ToTensor(),transforms.Normalize(mean=[0.485], std=[0.229])])<br>
 7. batch_size=32<br>
 8. Training_Data=Sound_Data_Train(transform=transform)<br>
 9. Test_Data=Sound_Data_Test(transform=transform)<br>
