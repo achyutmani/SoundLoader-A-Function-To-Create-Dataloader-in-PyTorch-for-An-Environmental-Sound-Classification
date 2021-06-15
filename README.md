@@ -1,4 +1,4 @@
-# SoundLoader: A Package To Create Dataloader in PyTorch for An Environmental Sound Classification
+# SoundLoader: A Function To Create Custom Dataloader in PyTorch for An Environmental Sound Classification
 Import Classes from SoundCustomDataloader_Train.py and SoundCustomDataloader_Test.py to Get the Training and Test Dataset for Sound Classification. Forward this dataset as an argument to dataloader in PyTorch. <br>
 Sample Example Code: <br>
 1. import torch<br>
